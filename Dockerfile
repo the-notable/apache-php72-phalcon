@@ -22,10 +22,10 @@ RUN docker-php-ext-install -j$(nproc) pdo_mysql
 
 COPY php.ini /usr/local/etc/php/
 
-ENTRYPOINT ["docker-php-entrypoint"]
-
-COPY apache2-foreground /usr/local/bin/
-WORKDIR /var/www/html
-
-EXPOSE 80
-CMD ["apache2-foreground"]
+#ENTRYPOINT ["docker-php-entrypoint"]
+#
+#COPY apache2-foreground /usr/local/bin/
+#WORKDIR /var/www/html
+#
+#EXPOSE 80
+#CMD ["apache2-foreground"]
