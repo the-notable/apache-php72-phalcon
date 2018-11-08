@@ -1,13 +1,13 @@
 FROM php:7.2-apache-stretch
 
 RUN apt-get update && apt-get install -y \
-    git
+    git \
+    zliblg-dev
 
 RUN git clone --depth=1 "git://github.com/phalcon/cphalcon.git" \
     && cd cphalcon/build \
     && ./install
 
-# Install Composer
 RUN curl -sS https://getcomposer.org/installer | php  \
     && mv composer.phar /usr/local/bin/composer
 
@@ -18,14 +18,7 @@ RUN mkdir -p /usr/src/php/ext/redis \
     && echo 'redis' >> /usr/src/php-available-exts \
     && docker-php-ext-install redis
 
-RUN docker-php-ext-install -j$(nproc) pdo_mysql
+RUN docker-php-ext-install -j$(nproc) pdo_mysql \
+    && docker-php-ext-install -j$(nproc) zip
 
 COPY php.ini /usr/local/etc/php/
-
-#ENTRYPOINT ["docker-php-entrypoint"]
-#
-#COPY apache2-foreground /usr/local/bin/
-#WORKDIR /var/www/html
-#
-#EXPOSE 80
-#CMD ["apache2-foreground"]
