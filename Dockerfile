@@ -142,7 +142,7 @@ RUN set -xe; \
 		wget -O php.tar.xz.asc "$PHP_ASC_URL"; \
 		export GNUPGHOME="$(mktemp -d)"; \
 		for key in $GPG_KEYS; do \
-			gpg --keyserver ip4.pool.sks-keyservers.net --recv-keys "$key"; \
+			gpg --keyserver ipv4.pool.sks-keyservers.net --recv-keys "$key"; \
 		done; \
 		gpg --batch --verify php.tar.xz.asc php.tar.xz; \
 		command -v gpgconf > /dev/null && gpgconf --kill all; \
@@ -276,7 +276,7 @@ RUN git clone --depth=1 "git://github.com/phalcon/cphalcon.git" \
 RUN curl -sS https://getcomposer.org/installer | php  \
     && mv composer.phar /usr/local/bin/composer
 
- RUN a2enmod rewrite
+RUN a2enmod rewrite
 
 RUN mkdir -p /usr/src/php/ext/redis \
     && curl -L https://github.com/phpredis/phpredis/archive/4.1.1.tar.gz | tar xvz -C /usr/src/php/ext/redis --strip 1 \
