@@ -3,7 +3,7 @@ set -e
 
 dir=/usr/src/php
 
-# comment
+#  comment
 usage() {
 	echo "usage: $0 COMMAND"
 	echo
