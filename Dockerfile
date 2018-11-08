@@ -2,7 +2,7 @@ FROM php:7.2-apache-stretch
 
 RUN apt-get update && apt-get install -y \
     git \
-    zliblg-dev
+    zlib1g-dev
 
 RUN git clone --depth=1 "git://github.com/phalcon/cphalcon.git" \
     && cd cphalcon/build \
