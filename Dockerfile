@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
     unzip \
 
     && cd ~ \
-    && git clone --depth=1 "git://github.com/phalcon/cphalcon.git" \
+    && git clone --depth=1 --branch "v3.4.1" "git://github.com/phalcon/cphalcon.git" \
     && cd cphalcon/build \
     && ./install \
     && cd ~ \
